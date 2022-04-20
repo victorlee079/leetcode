@@ -10,4 +10,5 @@ class Solution:
                 di = (-di[1], di[0])
             elif c == "R":
                 di = (di[1], -di[0])
+        # It does not move or its direction changed
         return di != (0, 1) or (x == 0 and y == 0)
