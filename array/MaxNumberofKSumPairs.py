@@ -29,3 +29,15 @@ class Solution:
             else:
                 r -= 1
         return ans
+
+    def maxOperationsOnePass(self, nums: List[int], k: int) -> int:
+        d = defaultdict(int)
+        
+        ret = 0
+        for i in nums:
+            if d[k-i] > 0:
+                ret += 1
+                d[k-i] -= 1
+            else:
+                d[i] += 1
+        return ret
