@@ -10,7 +10,8 @@ class Solution:
         while curr:
             stk.append(curr)
             curr = curr.next
-        while stk:
+        n = len(stk) // 2
+        for i in range(n):
             node = stk.pop()
             if node.val != head.val:
                 return False
