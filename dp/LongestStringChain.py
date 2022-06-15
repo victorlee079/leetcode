@@ -27,6 +27,21 @@ class Solution:
             dp[i] = max_len
             res = max(dp[i], res)
         return res
+    
+    def longestStrChain2(self, words: List[str]) -> int:
+        words.sort(key=lambda x: len(x))
+        dp = defaultdict(int)
+
+        res = 1
+        for i in range(len(words)):
+            word = words[i]
+            dp[word] = 1
+            for j in range(len(word)):
+                key = word[:j] + word[j+1:]
+                if key in dp:
+                    dp[word] = dp[key] + 1
+                    res = max(dp[word], res)
+        return res
             
         
             
