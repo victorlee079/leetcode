@@ -1,4 +1,5 @@
 class Solution:
+    # O(N * N * L)
     def longestStrChain(self, words: List[str]) -> int:
         words.sort(key=lambda x: len(x))
         dp = [1] * len(words)
@@ -28,6 +29,7 @@ class Solution:
             res = max(dp[i], res)
         return res
     
+    # O(N * L)
     def longestStrChain2(self, words: List[str]) -> int:
         words.sort(key=lambda x: len(x))
         dp = defaultdict(int)
