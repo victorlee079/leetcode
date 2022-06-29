@@ -5,5 +5,6 @@ class Solution:
         people.sort(key=lambda p: (-p[0], p[1]))
         res = []
         for p in people:
+            # Insert to a position that satisfied the queue requirement
             res.insert(p[1], p)
         return res
