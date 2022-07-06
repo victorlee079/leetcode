@@ -31,6 +31,7 @@ class Solution:
             
             power(F, n // 2)
             multiply(F, F)
+            # For odd number
             if n % 2 != 0:
                 multiply(F, M)
         
