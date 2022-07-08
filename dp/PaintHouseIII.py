@@ -1,3 +1,6 @@
+# Time O(M*T*N^2)
+# Spce O(M*T*N)
+
 class Solution:
     def minCost(self, houses: List[int], cost: List[List[int]], m: int, n: int, target: int) -> int:
       # dp[i][j][k] minimum cost where we have k neighborhoods in the first i houses and the i-th house is painted with the color j
