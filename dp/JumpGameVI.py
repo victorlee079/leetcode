@@ -9,7 +9,7 @@ class Solution:
         return nums[-1]
     
     # Use heapq 
-    # Time O(nlogk)
+    # Time O(nlogn)
     def maxResult(self, nums: List[int], k: int) -> int:
         n = len(nums)
         heap = [(-nums[0], 0)]
