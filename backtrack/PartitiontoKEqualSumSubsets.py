@@ -5,7 +5,7 @@ class Solution:
         
         target = sum(nums) // k
         
-        sums = [target] * k
+        sums = [0] * k
         
         nums.sort(reverse=True)
         
@@ -14,12 +14,14 @@ class Solution:
                 return True
         
             for j in range(k):
-                if sums[j] >= nums[index]:
-                    sums[j] -= nums[index]
+                if sums[j] + nums[index] <= target:
+                    sums[j] += nums[index]
                     if backtrack(index+1):
                         return True
-                    sums[j] += nums[index]
-                    if nums[index] == sums[j]:
+                    sums[j] -= nums[index]
+                    # Algo always fill previous buckets
+                    # for k > p > j, sums[p] is also zero which make no differences
+                    if sums[j] == 0:
                         break
             return False                    
             
