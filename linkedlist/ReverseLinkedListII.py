@@ -24,3 +24,25 @@ class Solution:
         slow.next = prev
         
         return dummy.next
+    
+    # Single Pass
+    def reverseBetweenSp(self, head: Optional[ListNode], left: int, right: int) -> Optional[ListNode]:
+        if left == right:
+            return head
+        
+        dummy = ListNode(next=head)
+        slow = fast = dummy
+        
+        while left > 1:
+            slow, fast = slow.next, fast.next
+            right -= 1
+            left -= 1
+        
+        prev, curr, last = None, slow.next, slow.next
+              
+        for i in range(right):
+            curr.next, prev, curr = prev, curr, curr.next
+        
+        slow.next, last.next = prev, curr
+        
+        return dummy.next
