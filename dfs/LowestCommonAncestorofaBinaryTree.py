@@ -30,3 +30,32 @@ class Solution:
             if dfs(path[n], common, q):
                 return path[n]
         return None
+
+    def lowestCommonAncestor2(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+
+        def dfs(stk, target):
+            if stk[-1] == target:
+                return True
+            
+            node = stk[-1]
+            if node.left:
+                stk.append(node.left)
+                if dfs(stk, target):
+                    return True
+                stk.pop()
+            if node.right:
+                stk.append(node.right)
+                if dfs(stk, target):
+                    return True
+                stk.pop()
+            
+            return False
+                
+        stk = [root]
+        dfs(stk, p)
+        while stk:
+            node = stk[-1]
+            if dfs([node], q):
+                return node
+            stk.pop()
+        return None
