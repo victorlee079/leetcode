@@ -30,3 +30,17 @@ class Solution:
                 curr = node
             
         return root
+
+    def flattenO1(self, root: Optional[TreeNode]) -> None:
+        def deepRight(node):
+            while node.right:
+                node = node.right
+            return node
+        
+        while root:
+            if root.left:
+                rnode = deepRight(root.left)
+                rnode.right = root.right
+                root.right = root.left
+                root.left = None
+            root = root.right
