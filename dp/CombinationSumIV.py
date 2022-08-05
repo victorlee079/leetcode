@@ -1,4 +1,5 @@
 class Solution:
+    # If negative is allowed, infinite permutation will be resulted. (e.g. 9 + (-9) = 0)
     def combinationSum4(self, nums: List[int], target: int) -> int:
         dp = [0] * (target+1)
         dp[0] = 1
