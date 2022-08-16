@@ -1,6 +1,6 @@
 class Solution:
     # TLE
-    def findLadders(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+    def findLaddersBfsBt(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
         wordSet = set(wordList)
         
         if endWord not in wordList or beginWord == endWord:
@@ -47,5 +47,39 @@ class Solution:
         if path:
             n = len(path)
             backtrack([beginWord], set(wordList), n, beginWord, endWord)
+        
+        return res
+    
+    # TLE
+    def findLaddersBfs(self, beginWord: str, endWord: str, wordList: List[str]) -> List[List[str]]:
+        wordSet = set(wordList)
+        
+        if endWord not in wordList or beginWord == endWord:
+            return []
+        
+        q = deque([(beginWord, 1, [beginWord], set([beginWord]))])
+        res = []
+        
+        def bfs(q):
+            found = False
+            while not found and q:
+                n = len(q)
+                for i in range(n):
+                    word, cnt, path, visited = q.popleft()
+                    if word == endWord:
+                        found = True
+                        res.append(path)
+
+                    for j in range(len(word)):
+                        for k in range(26):
+                            newWord = word[:j] + chr(97+k) + word[j+1:]
+                            if newWord not in visited and newWord in wordSet:
+                                newv = visited.copy()
+                                newv.add(newWord)
+                                newpath = path[::]
+                                newpath.append(newWord)
+                                q.append((newWord, cnt+1, newpath, newv))
+        
+        bfs(q)
         
         return res
