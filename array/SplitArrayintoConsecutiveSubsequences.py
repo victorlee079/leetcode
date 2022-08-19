@@ -19,3 +19,22 @@ class Solution:
                 return False
         return True
             
+    def isPossible2Maps(self, nums: List[int]) -> bool:
+        counts = Counter(nums)
+        end = defaultdict(int)
+        
+        for num in nums:
+            if not counts[num]:
+                continue
+            counts[num] -= 1
+            if end[num-1] > 0:
+                end[num-1] -= 1
+                end[num] += 1
+            elif counts[num+1] and counts[num+2]:
+                counts[num+1] -= 1
+                counts[num+2] -= 1
+                end[num+2] += 1
+            else:
+                return False
+        return True
+            
