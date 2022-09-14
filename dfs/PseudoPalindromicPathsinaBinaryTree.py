@@ -41,6 +41,7 @@ class Solution:
             if node is not None:
                 # compute occurences of each digit 
                 # in the corresponding register
+                # Shift 1 to the node.val ith bit
                 path = path ^ (1 << node.val)
                 # if it's a leaf, check if the path is pseudo-palindromic
                 if node.left is None and node.right is None:
