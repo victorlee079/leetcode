@@ -32,4 +32,34 @@ class Solution:
                 
         return True
         
+    def equationsPossibleUnionFind(self, equations: List[str]) -> bool:
+        not_equals = defaultdict(list)
+        
+        parent = {a: a for a in "abcdefghijklmnopqrstuvwxyz"}
+        
+        def find(v):
+            if v == parent[v]:
+                return v
+            else:
+                parent[v] = find(parent[v])
+            return parent[v]
+        
+        for equ in equations:
+            equal = equ[1:3] == "=="
+            v1, v2 = equ[0], equ[3]
+            if equal:
+                parent[find(v1)] = find(v2)
+            else:
+                if v1 == v2:
+                    return False
+                not_equals[v1].append(v2)
+
+        for key, vertices in not_equals.items():
+            for v in vertices:
+                if find(key) == find(v):
+                    return False
+                
+        return True
+        
+            
             
