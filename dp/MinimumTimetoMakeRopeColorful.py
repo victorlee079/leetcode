@@ -31,4 +31,25 @@ class Solution:
         
         return res
                 
+    def minCostTwoPointers(self, colors: str, neededTime: List[int]) -> int:
+        i = totalTime = 0
+        
+        while i < len(colors)-1:
+            if colors[i] == colors[i+1]: 
+                maxTime = 0
+                currTimeSum = 0
+                j = i
+                
+                while j < len(colors)-1 and colors[j] == colors[j+1]:
+                    j += 1
+                currTimeSum = sum(neededTime[i:j+1])
+                maxTime = max(neededTime[i:j+1])
+                
+                totalTime += currTimeSum - maxTime
+                
+                i = j+1
+            else:
+                i += 1
+            
+        return totalTime
             
