@@ -30,6 +30,24 @@ class TimeMap:
                 return self.timeMap[j][1][key]
         return ""
 
+class TimeMapSortedDict:
+
+    def __init__(self):
+        self.d = defaultdict(SortedDict)
+
+    def set(self, key: str, value: str, timestamp: int) -> None:
+        self.d[key][timestamp] = value
+
+    def get(self, key: str, timestamp: int) -> str:
+        s = self.d[key]
+        
+        # Assignment of variables within expression
+        if (i := s.bisect_right(timestamp)) > 0:
+            _, v = s.peekitem(i - 1)  # "_" is the largest key in "s" which is less than or equal to "timestamp" 
+
+            return v
+
+        return ''
 
 # Your TimeMap object will be instantiated and called as such:
 # obj = TimeMap()
