@@ -16,4 +16,5 @@ class Solution:
             for j in range(i+1, n+1):
                 if dp[j] and s[i:j] in wordDict:
                     dp[i] = True
+                    break
         return dp[0]
