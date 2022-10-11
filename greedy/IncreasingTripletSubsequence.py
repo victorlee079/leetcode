@@ -14,4 +14,15 @@ class Solution:
                         return True
 
         return False
+
+    def increasingTriplet(self, nums: List[int]) -> bool:
+        first = second = inf
+        for num in nums:
+            if num > second:
+                return True
+            elif num > first:
+                second = num
+            elif num < first:
+                first = num
+        return False
         
