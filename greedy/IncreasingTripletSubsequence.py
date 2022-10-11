@@ -1,4 +1,5 @@
 class Solution:
+    # TLE O(n^2)
     def increasingTripletDp(self, nums: List[int]) -> bool:
         n = len(nums)
         if n < 3:
