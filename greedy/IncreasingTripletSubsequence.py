@@ -14,10 +14,13 @@ class Solution:
                         return True
 
         return False
-
+    
+    # O(n)
     def increasingTriplet(self, nums: List[int]) -> bool:
+        # Current min 1st and current min 2nd
         first = second = inf
         for num in nums:
+            # Found 1 number > current min 2nd
             if num > second:
                 return True
             elif num > first:
