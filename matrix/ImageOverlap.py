@@ -44,3 +44,18 @@ class Solution:
                 max_overlaps = max(max_overlaps, non_zeros)
 
         return max_overlaps
+    
+    # O(n^4)
+    def largestOverlap(self, map1: List[List[int]], map2: List[List[int]]) -> int:
+        n = len(map1)
+        # Store the ones' position
+        l1 = [(i, j) for i in range(n) for j in range(n) if map1[i][j]]
+        l2 = [(i, j) for i in range(n) for j in range(n) if map2[i][j]]
+
+        d = defaultdict(int)
+        for i in l1:
+            for j in l2:
+                # (i[0]-j[0], i[1]-j[1]) is the offset between 2 cells
+                d[(i[0]-j[0], i[1]-j[1])] += 1
+        
+        return max(d.values()) if len(d.values()) > 0 else 0
