@@ -45,7 +45,7 @@ class Solution:
 
         return max_overlaps
     
-    # O(n^4)
+    # Still O(n^4), but faster
     def largestOverlap(self, map1: List[List[int]], map2: List[List[int]]) -> int:
         n = len(map1)
         # Store the ones' position
