@@ -5,9 +5,9 @@ class StockSpanner:
         
 
     def next(self, price: int) -> int:
-        cnt = 1
+        span = 1
         while self.stk and self.stk[-1][0] <= price:
-            p, c = self.stk.pop()
-            cnt += c
-        self.stk.append((price, cnt))
+            p, s = self.stk.pop()
+            span += s
+        self.stk.append((price, span))
         return cnt
