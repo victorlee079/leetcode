@@ -10,4 +10,4 @@ class StockSpanner:
             p, s = self.stk.pop()
             span += s
         self.stk.append((price, span))
-        return cnt
+        return span
