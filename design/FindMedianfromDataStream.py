@@ -30,7 +30,7 @@ class MedianFinderV2:
     def addNum(self, num):
         heappush(self.large, -heappushpop(self.small, -num))
         if len(self.large) > len(self.small):
-            heappush(self.small, -heappushpop(self.large, num))
+            heappush(self.small, -heappop(self.large))
 
     def findMedian(self):
         if len(self.small) == len(self.large):
