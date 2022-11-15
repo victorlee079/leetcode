@@ -13,7 +13,30 @@ class Solution:
 
         l = depth(root.left)
         r = depth(root.right)
+        
+'''
+Case 1:
+1
+| \
+2   3
+| \ |
+4 5 6
 
+Left side is completely filled. 
+(2 ** l - 1) + 1
+Nodes in left + root
+
+Case 2:
+1
+| \
+2  3
+| \
+4 5
+
+Right side is completely filled.
+
+'''
+        
         # Equal means the left side is complete completely filled
         if l == r:
             return 2 ** l + self.countNodes(root.right)
