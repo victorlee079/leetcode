@@ -31,3 +31,16 @@ class Solution:
                 ret = min(ret, 1 + dp[i - sq])
             dp[i] = ret
         return dp[n]
+
+    # O(n sqrt(n))
+    def numSquares(self, n: int) -> int:
+        dp = [math.inf for _ in range(n+1)]
+        dp[0] = 0
+        root = 1
+        square = root*root
+        while(square <= n) :
+            for i in range(square, n+1) :
+                dp[i] = min(dp[i], dp[i-square]+1)
+            root += 1
+            square = root*root
+        return dp[n]
