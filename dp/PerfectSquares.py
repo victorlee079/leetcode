@@ -17,3 +17,17 @@ class Solution:
             return ret
 
         return recurion(n)
+    # TLE
+    def numSquares(self, n: int) -> int:
+        mem = {}
+        dp = [0] * (n+1)
+
+        for i in range(1, n+1):
+            ret = math.inf
+            for j in range(1, i+1):
+                sq = j * j
+                if sq > i:
+                    break
+                ret = min(ret, 1 + dp[i - sq])
+            dp[i] = ret
+        return dp[n]
