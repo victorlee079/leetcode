@@ -26,3 +26,22 @@ class Solution:
         first.next = dummy.next
         second.next = None
         return head
+    
+    def oddEvenList20220612(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        odd_head, even_head = ListNode(), ListNode()
+        odd_curr, even_curr = odd_head, even_head
+
+        i, curr = 1, head
+
+        while curr:
+            if i % 2 == 1:
+                odd_curr.next = curr
+                odd_curr = odd_curr.next
+            else:
+                even_curr.next = curr
+                even_curr = even_curr.next
+            i += 1
+            curr = curr.next
+
+        odd_curr.next, even_curr.next = even_head.next, None
+        return odd_head.next
