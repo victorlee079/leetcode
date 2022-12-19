@@ -19,3 +19,22 @@ class Solution:
         visited = set()
         visited.add(source)
         return dfs(source, visited)
+
+    def validPathUnionFind(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:
+        parents = [i for i in range(n)]
+
+        def find(index):
+            if parents[index] == index:
+                return index
+            else:
+                return find(parents[index])
+        
+        def union(x, y):
+            parents[x] = y
+
+        for u, v in edges:
+            x = find(u)
+            y = find(v)
+            union(x, y)
+
+        return find(source) == find(destination)
