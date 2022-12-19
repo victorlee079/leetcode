@@ -50,6 +50,7 @@ class Solution:
                 return find(parents[index])
         
         def union(x, y):
+            # higher rank will be the parent
             if ranks[x] > ranks[y]:
                 x, y = y, x
             ranks[y] += ranks[x]
