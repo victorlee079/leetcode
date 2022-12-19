@@ -38,3 +38,26 @@ class Solution:
             union(x, y)
 
         return find(source) == find(destination)
+    
+    def validPathUnionFindWithRank(self, n: int, edges: List[List[int]], source: int, destination: int) -> bool:       
+        parents = [i for i in range(n)]
+        ranks = [1] * n
+
+        def find(index):
+            if parents[index] == index:
+                return index
+            else:
+                return find(parents[index])
+        
+        def union(x, y):
+            if ranks[x] > ranks[y]:
+                x, y = y, x
+            ranks[y] += ranks[x]
+            parents[x] = y
+
+        for u, v in edges:
+            x = find(u)
+            y = find(v)
+            union(x, y)
+
+        return find(source) == find(destination)
