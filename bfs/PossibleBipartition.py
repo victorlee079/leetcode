@@ -7,11 +7,13 @@ class Solution:
             graph[b-1].append(a-1)
 
         colors = [-1] * n
-
+        
+        # Return True if failed
         def bfs(i):
             curr = colors[i] = 0
             q = deque(graph[i])
             while q:
+                # Marking the connected node as the opposite color
                 curr = 1 - curr
                 l = len(q)
                 for _ in range(l):
