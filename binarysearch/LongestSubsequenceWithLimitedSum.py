@@ -9,6 +9,7 @@ class Solution:
             l, r = 0, n
             while l < r:
                 mid = l + (r - l) // 2
+                # bisect_right
                 if nums[mid] <= val:
                     l = mid + 1
                 else:
