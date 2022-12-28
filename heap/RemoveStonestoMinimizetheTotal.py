@@ -28,11 +28,10 @@ class Solution:
         # negative for max heap in python
         return ans - sum(max_heap)
         
-    def minStoneSumSimpler(self, piles: List[int], k: int) -> int:
+    def minStoneSumJustMaxHeap(self, piles: List[int], k: int) -> int:
         piles = [-p for p in piles]
         heapq.heapify(piles)
         for _ in range(k):
-            curr = -heapq.heappop(piles)
-            remove = curr // 2
-            heapq.heappush(piles, -(curr - remove))
+            curr = -piles[0]
+            heapq.heapreplace(piles, -(curr - curr // 2))
         return -sum(piles)
