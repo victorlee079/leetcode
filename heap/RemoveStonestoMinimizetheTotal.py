@@ -27,7 +27,7 @@ class Solution:
 
         # negative for max heap in python
         return ans - sum(max_heap)
-        
+    # O(n + k log n)
     def minStoneSumJustMaxHeap(self, piles: List[int], k: int) -> int:
         piles = [-p for p in piles]
         heapq.heapify(piles)
