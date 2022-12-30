@@ -1,4 +1,5 @@
 class Solution:
+    # O(n * 2^n)
     def allPathsSourceTarget(self, graph):
         n = len(graph)
         ret = []
